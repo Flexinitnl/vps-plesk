@@ -1,14 +1,28 @@
-#! /bin/bash
-echo "Prepairing to update kernel"
+#!/bin/bash
+
+# Update the package list
+clear
+echo "Preparing to update kernel"
 apt update
 
-echo "Prepairing to upgrade kernel"
+# Upgrade the packages
+echo "Preparing to upgrade kernel"
 apt upgrade -y
 
-echo "Excecuting Plesk installation"
-sh <(curl https://autoinstall.plesk.com/one-click-installer)
+# Install Plesk
+echo "Executing Plesk installation"
+if command -v curl &> /dev/null; then
+    sh <(curl -fsSL https://autoinstall.plesk.com/one-click-installer)
+elif command -v wget &> /dev/null; then
+    sh <(wget -qO- https://autoinstall.plesk.com/one-click-installer)
+else
+    echo "Error: Neither curl nor wget is installed."
+    exit 1
+fi
 
-
-echo "enable Apache modules"
-
+# Enable Apache modules
+echo "Enabling Apache modules"
 plesk sbin httpd_modules_ctl -e cgi mpm_prefork passenger sysenv
+echo
+echo "Apache modules enabled"
+echo "Plesk installation and configuration completed."
