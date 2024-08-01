@@ -29,6 +29,7 @@ extensions=(
     panel-ini-editor
     ssh-keys
     slave-dns-manager
+    patchmaninstaller
 )
 
 # Install Plesk extensions
