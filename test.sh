@@ -31,9 +31,8 @@ apt upgrade -y
 # Enable Apache modules
 echo "Enabling Apache modules"
 plesk sbin httpd_modules_ctl -e cgi mpm_prefork passenger sysenv
-echo
 echo "Apache modules enabled"
-echo "Plesk installation and configuration completed."
+echo
 
 echo "Installing Plesk Extentions"
 plesk bin extension --install advisor
