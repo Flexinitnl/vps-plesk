@@ -1,10 +1,10 @@
 #!/bin/bash
 
 # Add Apache modules
-plesk bin apache_modules --add cgi
-plesk bin apache_modules --add mpm_prefork
-plesk bin apache_modules --add passenger
-plesk bin apache_modules --add sysenv
+plesk sbin httpd_modules_ctl -e cgi
+plesk sbin httpd_modules_ctl -e mpm_prefork
+plesk sbin httpd_modules_ctl -e passenger
+plesk sbin httpd_modules_ctl -e sysenv
 
 # Restart Apache
 service apache2 restart
