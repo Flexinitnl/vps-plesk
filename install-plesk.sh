@@ -26,23 +26,17 @@ else
     exit 1
 fi
 
-# Enable Apache modules
-echo "Enabling Apache modules"
-plesk sbin httpd_modules_ctl -e cgi mpm_prefork passenger sysenv
-echo "Apache modules enabled"
-echo
-
-# Install Plesk Extensions
-echo "Installing Plesk Extensions"
+# Install Apache modules
+echo "Installing Apache modules"
 if command -v curl &> /dev/null; then
-    curl -fsSL https://raw.githubusercontent.com/Flexinitnl/vps-plesk/main/scripts/plesk-extensions.sh | bash
+    curl -fsSL https://raw.githubusercontent.com/Flexinitnl/vps-plesk/main/scripts/apache-modules.sh | bash
 elif command -v wget &> /dev/null; then
-    wget -qO- https://raw.githubusercontent.com/Flexinitnl/vps-plesk/main/scripts/plesk-extensions.sh | bash
+    wget -qO- https://raw.githubusercontent.com/Flexinitnl/vps-plesk/main/scripts/apache-modules.sh | bash
 else
     echo "Error: Neither curl nor wget is installed."
     exit 1
 fi
-echo "Plesk Extensions installed"
+echo "Apache modules installed"
 
 # Configure MySQL
 echo "Configuring MySQL"
