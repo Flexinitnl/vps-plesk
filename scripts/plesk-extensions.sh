@@ -38,7 +38,6 @@ extensions=(
     support-access
     website-virus-check
     wp-toolkit
-
 )
 
 # Install Plesk extensions
