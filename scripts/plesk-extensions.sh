@@ -18,7 +18,6 @@ extensions=(
     email-migration
     firewall
     git
-    kaspersky-av
     kolab
     laravel
     letsencrypt
@@ -46,6 +45,14 @@ extensions=(
 for extension in "${extensions[@]}"; do
     echo "Installing $extension"
     plesk bin extension --install "$extension"
+    plesk bin extension --enable "$extension"
 done
 
+# Install Plesk Migrator
 plesk installer --select-release-current --install-component pmm
+
+# Install SpamAssassin
+plesk installer --select-release-current --install-component spamassassin
+
+# Install WP-Toolkit
+plesk installer --select-release-current --install-component wp-toolkit
