@@ -2,34 +2,44 @@
 
 # List of Plesk extensions to install
 extensions=(
-    advisor
-    composer
-    firewall
-    docker
-    sectigo
-    dnssec
-    domain-connect
     aast-dnssec
-    email-migration
-    kaspersky-av
-    social-login
     action-log
-    plesk-mobile
-    diskspace-usage-viewer
-    baqend
-    kolab
-    one-drive-backup
-    azuredns
-    dns-transfer
-    support-access
+    advisor
     aps-autoprovision
+    azuredns
+    baqend
+    composer
+    configurations-troubleshooter
+    diskspace-usage-viewer
+    dnssec
+    dns-transfer
+    docker
+    domain-connect
+    email-migration
+    firewall
     git
-    website-virus-check
+    kaspersky-av
+    kolab
+    laravel
     letsencrypt
+    mfa
+    nodejs
+    one-drive-backup
     panel-ini-editor
-    ssh-keys
-    slave-dns-manager
     patchmaninstaller
+    plesk-mobile
+    repair-kit
+    sectigo
+    site-import
+    social-login
+    ssh-keys
+    ssh-terminal
+    slave-dns-manager
+    social-login
+    support-access
+    website-virus-check
+    wp-toolkit
+
 )
 
 # Install Plesk extensions
@@ -37,3 +47,5 @@ for extension in "${extensions[@]}"; do
     echo "Installing $extension"
     plesk bin extension --install "$extension"
 done
+
+plesk installer --select-release-current --install-component pmm
